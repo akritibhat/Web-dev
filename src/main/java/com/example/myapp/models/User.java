@@ -1,4 +1,4 @@
-package com.example.webdevsummer22018serverjavajannunzi.models;
+package com.example.myapp.models;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
