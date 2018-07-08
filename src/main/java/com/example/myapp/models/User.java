@@ -9,11 +9,17 @@ import javax.persistence.Id;
 public class User {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer id;
+	private int id;
 	private String username;
 	private String password;
 	private String firstName;
-	private String lastName;
+	private String lasteName;
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getUsername() {
 		return username;
 	}
@@ -32,16 +38,10 @@ public class User {
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
-	public String getLastName() {
-		return lastName;
+	public String getLasteName() {
+		return lasteName;
 	}
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-	public Integer getId() {
-		return id;
-	}
-	public void setId(Integer id) {
-		this.id = id;
+	public void setLasteName(String lasteName) {
+		this.lasteName = lasteName;
 	}
 }
