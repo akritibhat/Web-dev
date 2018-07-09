@@ -2,7 +2,7 @@
 // Immediately Invoked Function Expression
 (function () {
 
-  var registerBtn = jQuery('#registerBtn');
+  var registerBtn = $('#registerBtn');
   var usernameFld = $('#username');
   var passwordFld = $('#password');
   var password2Fld = $('#password2');
@@ -32,8 +32,18 @@
       body: userObjStr,
       headers: {
         'Content-Type': 'application/json'
-      }
-    });
-
+      },
+      'credentials':'include'
+    }).then(registartionSuccessful,registrationFailed);
   }
+  
+  function registartionSuccessful(){
+	 // alert('yay');
+	  window.location.href='jquery/components/profile/profile.template.client.html';
+  }
+  
+  function registrationFailed(){
+	  alert('oops');
+  }
+  
 })();

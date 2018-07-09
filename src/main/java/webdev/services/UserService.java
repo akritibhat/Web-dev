@@ -3,6 +3,8 @@ package webdev.services;
 import java.util.List;
 import java.util.Optional;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,8 +28,15 @@ public class UserService {
 	}
 	
 	@PostMapping("/api/user")
-	public User createUser(@RequestBody User user) {
-		return repository.save(user);
+	public User createUser(@RequestBody User user, HttpSession session) {
+		User cu= repository.save(user);
+		session.setAttribute("currentUser", cu);
+		return cu;
+	}
+	
+	@GetMapping("/checkLogin")
+	public User checkLogin(HttpSession session) {
+		return (User) session.getAttribute("currentUser");
 	}
 	
 	@PostMapping("/api/login")
