@@ -17,7 +17,12 @@
     var password2Str = password2Fld.val();
     var firstnameStr = firstnameFld.val();
     var lastnameStr = lastnameFld.val();
-
+    
+    if (passwordStr != password2Str) {
+    	 alert('Password mismatch');
+    }
+    
+    else {
     var userObj = {
       username: usernameStr,
       password: passwordStr,
@@ -36,6 +41,7 @@
       },
      
     }).then(registartionSuccessful,registrationFailed);
+    }
   }
   
   function registartionSuccessful(){
@@ -45,6 +51,7 @@
   
   function registrationFailed(){
 	  alert('oops');
+  
   }
   
 })();
