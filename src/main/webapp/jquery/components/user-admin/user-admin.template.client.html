@@ -23,13 +23,15 @@
         <th>Password</th>
         <th>First Name</th>
         <th>Last Name</th>
-        <th></th>
+        <th>Role</th>
+        <th>&nbsp;</th>
       </tr>
       <tr>
         <th><input id="usernameFld" class="form-control" placeholder="jdoe"/></th>
         <th><input id="passwordFld" class="form-control" type="password"/></th>
         <th><input id="firstNameFld" class="form-control" placeholder="John"/></th>
         <th><input id="lastNameFld" class="form-control" placeholder="Doe"/></th>
+        <th><input id="roleFld" class="form-control" placeholder="Doe"/></th> 
         <th><button id="createUser" class="btn btn-success">Create</button></th>
         <th><button id="updateUser" class="btn btn-success">Update</button></th>
       </tr>
@@ -40,6 +42,13 @@
         <td class ="password">****</td>
         <td class ="firstName">Alice</td>
         <td class ="lastName">Wonderland</td>
+        <td class = "role">
+        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+        <option selected>Faculty</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+      </select></td>
         <th>
           <button class="delete btn btn-danger">Delete</button>
           <button class="edit btn btn-danger">Edit</button>

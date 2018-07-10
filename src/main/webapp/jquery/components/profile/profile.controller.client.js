@@ -9,7 +9,7 @@
     var userService = new UserServiceClient();
 
     function init() {
-        $staticEmail = $("#staticEmail");
+        $username = $("#username");
         $firstName = $("#firstName");
         $lastName = $("#lastName");
         $updateBtn = $("#updateBtn")
@@ -48,7 +48,7 @@
     
     function renderUser(user) {
         console.log(user);
-        $staticEmail.val(user.username);
+        $username.val(user.username);
         $firstName.val(user.firstName);
         $lastName.val(user.lastName);
     }

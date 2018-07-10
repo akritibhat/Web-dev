@@ -1,28 +1,36 @@
+ <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+  <div class="container">
 <h1>Login</h1>
 
-<div>
+ <div class="form-group">
     <label for="username">
         Username
     </label>
     <input type="text"
-           placeholder="alice"
+           placeholder="username"
+           class="form-control"
            id="username"/>
 </div>
 
-<div>
+ <div class="form-group">
     <label for="password">
         Password
     </label>
     <input type="password"
-           placeholder="1234qwerasdf"
+           placeholder="password"
+           class="form-control"
            id="password"/>
 </div>
-<button id="loginBtn">
+<button id="loginBtn" class="btn btn-primary">
     Login
 </button>
-<a href="register.template.client.html">
+<a  href="register.template.client.html">
     Sign Up
 </a>
+
+</div>
 
  <script
                 src="https://code.jquery.com/jquery-3.3.1.min.js"
