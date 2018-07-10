@@ -5,13 +5,15 @@
 
     var tbody;
     var template;
-    var userService = new UserServiceClient()
+    var userService = new UserServiceClient(); 
+    var userMain;
 
     function main() {
         tbody = $('tbody');
         template = $('.template');
         $('#createUser').click(createUser);
-
+        $('#updateUser').click(updateUser);
+        
         findAllUsers();
     }
 
@@ -40,6 +42,26 @@
             .createUser(user)
             .then(findAllUsers);
     }
+    
+    function updateUser() {
+        console.log('updateUser');
+
+        var username = $('#usernameFld').val();
+        var password = $('#passwordFld').val();
+        var firstName = $('#firstNameFld').val();
+        var lastName = $('#lastNameFld').val();
+
+        var user = {
+            username: username,
+            password: password,
+            firstName: firstName,
+            lastName: lastName
+        };
+
+        userService
+            .updateUser(userMain,user)
+            .then(findAllUsers);
+    }
 
     function renderUsers(users) {
         tbody.empty();
@@ -54,6 +76,12 @@
 
             clone.find('.username')
                 .html(user.username);
+            clone.find('.password')
+            	.html(user.password);
+            clone.find('.firstName')
+            	.html(user.firstName);
+            clone.find('.lastName')
+        	.html(user.lastName);
             tbody.append(clone);
         }
     }
@@ -71,8 +99,36 @@
     }
 
     function editUser(event) {
+    	var editBtn = $(event.currentTarget);
+    	
+    	var userId = editBtn
+        	.parent()
+        	.parent()
+        	.attr('id');
+    	
+    	userMain=userId;
+    	userService
+    		.findUserById(userId)
+    		.then(renderEditUser);
+    	
+    	
         console.log('editUser');
         console.log(event);
+    }
+    
+    function renderEditUser(user) {
+    	console.log('editUser231');
+    	console.log(user.username);
+    	var username = user.username;
+        var password = user.password;
+        var firstName = user.firstName;
+        var lastName = user.lastName;
+    	
+        $('#usernameFld').val(username);
+        $('#passwordFld').val(password);
+        $('#firstNameFld').val(firstName);
+        $('#lastNameFld').val(lastName);
+        
     }
 
 })();

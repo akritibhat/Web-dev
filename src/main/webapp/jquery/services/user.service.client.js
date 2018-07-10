@@ -4,11 +4,11 @@ function UserServiceClient() {
     this.deleteUser = deleteUser;
     this.findUserById = findUserById;
     this.updateUser = updateUser;
-    this.login = login();
+    this.login = login;
     this.url =
-        'http://localhost:8080/api/user';
+        '/api/user';
     this.login =
-        'http://localhost:8080/api/login';
+        '/api/login';
     var self = this;
 
     function login(username, password) {
@@ -40,6 +40,13 @@ function UserServiceClient() {
 
     function findUserById(userId) {
         return fetch(self.url + '/' + userId)
+            .then(function(response){
+                return response.json();
+            });
+    }
+    
+    function loadUser() {
+        return fetch('/checkLogin')
             .then(function(response){
                 return response.json();
             });

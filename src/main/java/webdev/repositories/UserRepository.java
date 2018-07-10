@@ -12,4 +12,10 @@ public interface UserRepository
 	Iterable<User> findUserByCredentials(
 		@Param("username") String username, 
 		@Param("password") String password);
+
+	
+	@Query("SELECT u FROM User u WHERE u.username=:username AND u.password=:password")
+	User findUser(
+		@Param("username") String username, 
+		@Param("password") String password);
 }

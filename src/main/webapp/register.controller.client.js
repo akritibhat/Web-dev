@@ -30,10 +30,11 @@
     fetch('/api/user', {
       method: 'post',
       body: userObjStr,
+      credentials:'include',
       headers: {
         'Content-Type': 'application/json'
       },
-      'credentials':'include'
+     
     }).then(registartionSuccessful,registrationFailed);
   }
   

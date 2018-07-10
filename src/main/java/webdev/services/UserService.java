@@ -40,8 +40,17 @@ public class UserService {
 	}
 	
 	@PostMapping("/api/login")
-	public List<User> login(@RequestBody User user) {
+	public List<User> login(@RequestBody User user, HttpSession session) {
+		System.out.println(checkLogin(session).getUsername());
 		return (List<User>) repository.findUserByCredentials(user.getUsername(), user.getPassword());
+	}
+	
+	@PostMapping("/login")
+	public User loginUser(@RequestBody User user, HttpSession session) {
+		User cu= repository.findUser(user.getUsername(), user.getPassword());
+		session.setAttribute("currentUser", cu);
+		return cu;
+		 
 	}
 	
 	@GetMapping("/api/user")
@@ -54,7 +63,10 @@ public class UserService {
 		Optional<User> data = repository.findById(userId);
 		if(data.isPresent()) {
 			User user = data.get();
+			user.setUsername(newUser.getUsername());
+			user.setPassword(newUser.getPassword());
 			user.setFirstName(newUser.getFirstName());
+			user.setLastName(newUser.getLastName());
 			repository.save(user);
 			return user;
 		}

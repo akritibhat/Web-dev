@@ -1,4 +1,5 @@
 (function() {
+	
     $(init);
 
     var $staticEmail;
@@ -14,7 +15,7 @@
         $updateBtn = $("#updateBtn")
             .click(updateUser);
 
-        findUserById(12);
+        findUser();
     }
 
     function updateUser() {
@@ -36,9 +37,9 @@
         }
     }
 
-    function findUserById(userId) {
+    function findUser() {
         userService
-            .findUserById(userId)
+            .loadUser()
             .then(renderUser);
     }
     
