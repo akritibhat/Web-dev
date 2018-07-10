@@ -15,7 +15,7 @@
         $updateBtn = $("#updateBtn")
             .click(updateUser);
 
-        findUser();
+        findUser().then(renderUser);
     }
 
     function updateUser() {
@@ -38,9 +38,12 @@
     }
 
     function findUser() {
-        userService
-            .loadUser()
-            .then(renderUser);
+    	return fetch('/checkLogin', {
+    		   'credentials': 'include'
+    	    })
+    	    .then(function (response) {
+    	    	    return response.json();
+    	    	    });
     }
     
     function renderUser(user) {

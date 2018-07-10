@@ -36,7 +36,8 @@ public class UserService {
 	
 	@GetMapping("/checkLogin")
 	public User checkLogin(HttpSession session) {
-		return (User) session.getAttribute("currentUser");
+		User currentUser = (User) session.getAttribute("currentUser");
+		return findUserById(currentUser.getId());
 	}
 	
 	@PostMapping("/api/login")
