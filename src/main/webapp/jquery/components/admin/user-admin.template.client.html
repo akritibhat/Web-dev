@@ -2,60 +2,67 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet"/>
-<link href="/../../../css/user-admin.style.client.css" rel="stylesheet"/>
-<title>Admin Page</title>
- <script
-          src="https://code.jquery.com/jquery-3.3.1.min.js"
-          integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-          crossorigin="anonymous"></script>
+<link
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+	rel="stylesheet" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+<link href="/../../../css/user-admin.style.client.css" rel="stylesheet" />
 
-  <script src="../../services/user.service.client.js"></script>
-  <script src="user-admin.controller.client.js"></script>
+<title>Admin Page</title>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+	integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	crossorigin="anonymous"></script>
+
+<script src="../../services/user.service.client.js"></script>
+<script src="user-admin.controller.client.js"></script>
 
 </head>
 <body>
-<div class="container">
-  <h1 id="title">User Admin</h1>
-  <div class="container">
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Username</th>
-        <th>Password</th>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Role</th>
-        <th>&nbsp;</th>
-      </tr>
-      <tr>
-        <th><input id="usernameFld" class="form-control" placeholder="Username"/></th>
-        <th><input id="passwordFld" class="form-control" type="Password"/></th>
-        <th><input id="firstNameFld" class="form-control" placeholder="First Name"/></th>
-        <th><input id="lastNameFld" class="form-control" placeholder="Last Name"/></th>
-        <th>
-        <select class="custom-select mr-sm-5" id="roleFld">
-        <option value="Faculty">Faculty</option>
-        <option value="Student">Student</option>
-      </select></th>
-        <th><button id="createUser" class="btn btn-success">Create</button></th>
-        <th><button id="updateUser" class="btn btn-success">Update</button></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr class="template">
-        <td class="username"></td>
-        <td class ="password"></td>
-        <td class ="firstName"></td>
-        <td class ="lastName"></td>
-        <td class = "role"></td>
-        <td><button class="delete btn btn-danger">Delete</button></td>
-        <td><button class="edit btn btn-danger">Edit</button></td>
-      </tr>
-    </tbody>
-    <tfoot></tfoot>
-  </table>
-  </div>
-  </div>
+	<div class="container">
+		<h1 id="title">User Admin</h1>
+		<div class="container">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Username</th>
+						<th>Password</th>
+						<th>First Name</th>
+						<th>Last Name</th>
+						<th>Role</th>
+						<th>&nbsp;</th>
+					</tr>
+					<tr>
+						<th><input id="usernameFld" class="form-control"
+							placeholder="Username" /></th>
+						<th><input id="passwordFld" class="form-control"
+							type="Password" /></th>
+						<th><input id="firstNameFld" class="form-control"
+							placeholder="First Name" /></th>
+						<th><input id="lastNameFld" class="form-control"
+							placeholder="Last Name" /></th>
+						<th><select class="custom-select mr-sm-5" id="roleFld">
+								<option value="Faculty">Faculty</option>
+								<option value="Student">Student</option>
+						</select></th>
+						<th><button id="createUser" class="btn btn-success">Create</button></th>
+						<th><button id="updateUser" class="btn btn-success">Update</button></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="template">
+						<td class="username"></td>
+						<td class="password"></td>
+						<td class="firstName"></td>
+						<td class="lastName"></td>
+						<td class="role"></td>
+						<td><button class="delete btn btn-danger">Delete</button></td>
+						<td><button class="edit btn btn-danger">Edit</button></td>
+					</tr>
+				</tbody>
+				<tfoot></tfoot>
+			</table>
+		</div>
+	</div>
 </body>
 </html>

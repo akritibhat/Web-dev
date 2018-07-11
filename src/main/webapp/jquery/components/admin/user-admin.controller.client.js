@@ -1,142 +1,120 @@
 //IIFE
-(function () {
+(function() {
 
-    jQuery(main);
+	jQuery(main);
 
-    var tbody;
-    var template;
-    var userService = new UserServiceClient(); 
-    var userMain;
+	var tbody;
+	var template;
+	var userService = new UserServiceClient();
+	var userMain;
 
-    function main() {
-        tbody = $('tbody');
-        template = $('.template');
-        $('#createUser').click(createUser);
-        $('#updateUser').click(updateUser);
-        
-        findAllUsers();
-    }
+	function main() {
+		tbody = $('tbody');
+		template = $('.template');
+		$('#createUser').click(createUser);
+		$('#updateUser').click(updateUser);
 
-    function findAllUsers() {
-        userService
-            .findAllUsers()
-            .then(renderUsers);
-    }
+		findAllUsers();
+	}
 
-    function createUser() {
-        console.log('createUser');
+	function findAllUsers() {
+		userService.findAllUsers().then(renderUsers);
+	}
 
-        var username = $('#usernameFld').val();
-        var password = $('#passwordFld').val();
-        var firstName = $('#firstNameFld').val();
-        var lastName = $('#lastNameFld').val();
-        var role = $('#roleFld').val();
+	function createUser() {
+		console.log('createUser');
 
-        var user = {
-            username: username,
-            password: password,
-            firstName: firstName,
-            lastName: lastName,
-            role: role
-        };
+		var username = $('#usernameFld').val();
+		var password = $('#passwordFld').val();
+		var firstName = $('#firstNameFld').val();
+		var lastName = $('#lastNameFld').val();
+		var role = $('#roleFld').val();
 
-        userService
-            .createUser(user)
-            .then(findAllUsers);
-    }
-    
-    function updateUser() {
-        console.log('updateUser');
+		var user = {
+			username : username,
+			password : password,
+			firstName : firstName,
+			lastName : lastName,
+			role : role
+		};
 
-        var username = $('#usernameFld').val();
-        var password = $('#passwordFld').val();
-        var firstName = $('#firstNameFld').val();
-        var lastName = $('#lastNameFld').val();
-        var role = $('#roleFld').val();
+		userService.createUser(user).then(findAllUsers);
+	}
 
-        var user = {
-            username: username,
-            password: password,
-            firstName: firstName,
-            lastName: lastName,
-            role: role
-        };
+	function updateUser() {
+		console.log('updateUser');
 
-        userService
-            .updateUserProfile(userMain,user)
-            .then(findAllUsers);
-    }
+		var username = $('#usernameFld').val();
+		var password = $('#passwordFld').val();
+		var firstName = $('#firstNameFld').val();
+		var lastName = $('#lastNameFld').val();
+		var role = $('#roleFld').val();
 
-    function renderUsers(users) {
-        tbody.empty();
-        for(var i=0; i<users.length; i++) {
-            var user = users[i];
-            var clone = template.clone();
+		var user = {
+			username : username,
+			password : password,
+			firstName : firstName,
+			lastName : lastName,
+			role : role
+		};
 
-            clone.attr('id', user.id);
+		userService.updateUserProfile(userMain, user).then(findAllUsers);
+	}
 
-            clone.find('.delete').click(deleteUser);
-            clone.find('.edit').click(editUser);
+	function renderUsers(users) {
+		tbody.empty();
+		for (var i = 0; i < users.length; i++) {
+			var user = users[i];
+			var clone = template.clone();
 
-            clone.find('.username')
-                .html(user.username);
-            clone.find('.password')
-            	.html(user.password);
-            clone.find('.firstName')
-            	.html(user.firstName);
-            clone.find('.lastName')
-        	.html(user.lastName);
-            clone.find('.role')
-        	.html(user.role);
-            tbody.append(clone);
-        }
-    }
+			clone.attr('id', user.id);
 
-    function deleteUser(event) {
-        var deleteBtn = $(event.currentTarget);
-        var userId = deleteBtn
-            .parent()
-            .parent()
-            .attr('id');
+			clone.find('.delete').click(deleteUser);
+			clone.find('.edit').click(editUser);
 
-        userService
-            .deleteUser(userId)
-            .then(findAllUsers);
-    }
+			clone.find('.username').html(user.username);
+			clone.find('.password').html(user.password);
+			clone.find('.firstName').html(user.firstName);
+			clone.find('.lastName').html(user.lastName);
+			clone.find('.role').html(user.role);
+			tbody.append(clone);
+		}
+	}
 
-    function editUser(event) {
-    	var editBtn = $(event.currentTarget);
-    	
-    	var userId = editBtn
-        	.parent()
-        	.parent()
-        	.attr('id');
-    	
-    	userMain=userId;
-    	userService
-    		.findUserById(userId)
-    		.then(renderEditUser);
-    	
-    	
-        console.log('editUser');
-        console.log(event);
-    }
-    
-    function renderEditUser(user) {
-    	console.log('editUser231');
-    	console.log(user.username);
-    	var username = user.username;
-        var password = user.password;
-        var firstName = user.firstName;
-        var lastName = user.lastName;
-    	var role = user.role;
-    	
-        $('#usernameFld').val(username);
-        $('#passwordFld').val(password);
-        $('#firstNameFld').val(firstName);
-        $('#lastNameFld').val(lastName);
-        $('#roleFld').val(role);
-        
-    }
+	function deleteUser(event) {
+		var deleteBtn = $(event.currentTarget);
+		var userId = deleteBtn.parent().parent().attr('id');
+
+		userService.deleteUser(userId).then(findAllUsers);
+	}
+
+	function editUser(event) {
+		var editBtn = $(event.currentTarget);
+
+		var userId = editBtn.parent().parent().attr('id');
+
+		userMain = userId;
+		userService.findUserById(userId).then(renderEditUser);
+
+		console.log('editUser');
+		console.log(event);
+	}
+
+	function renderEditUser(user) {
+		console.log('editUser231');
+		console.log(user.username);
+		var username = user.username;
+		var password = user.password;
+		var firstName = user.firstName;
+		var lastName = user.lastName;
+		var role = user.role;
+
+		$('#usernameFld').val(username);
+		$('#passwordFld').val(password);
+		$('#firstNameFld').val(firstName);
+		$('#lastNameFld').val(lastName);
+		$('#roleFld').val(role);
+
+	}
 
 })();
