@@ -25,6 +25,7 @@
 		$contact = $('#contact');
 
 		$updateBtn = $("#updateBtn").click(updateUser);
+		$logoutBtn = $("#logoutBtn").click(logoutUser);
 
 		findUser().then(renderUser);
 	}
@@ -40,7 +41,17 @@
 			contact : $contact.val()
 		};
 
-		userService.updateUser(usermain, user).then(success, updateFailure);
+		return fetch('/api/profile', {
+			method : 'put',
+			body : JSON.stringify(user),
+			'credentials' : 'include',
+			headers : {
+				'content-type' : 'application/json'
+			}
+		}).then(success, updateFailure);
+
+		
+	//	userService.updateUser(usermain, user).then(success, updateFailure);
 	}
 
 	function success(response) {
@@ -58,6 +69,26 @@
 		}).then(function(response) {
 			return response.json();
 		});
+	}
+	
+	function logoutUser() {
+		var user = {
+			'username' : $username.val(),
+			'password' : $password.val()
+		};
+
+		fetch('/api/logout', {
+			method : 'post',
+			body : JSON.stringify(user),
+			credentials : 'include',
+			headers : {
+				'content-type' : 'application/json'
+			}
+		}).then(navigateToLogin);
+	}
+
+	function navigateToLogin() {
+		window.location.href = '/../jquery/components/login/login.template.client.html';
 	}
 
 	function renderUser(user) {
