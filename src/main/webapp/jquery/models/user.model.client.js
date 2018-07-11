@@ -10,22 +10,22 @@ function User(username, password, firstName, lastName, role, email,
 	this.contact = contact;
 
 	this.setUsername = setUsername;
-	this.setpassword = setPassword;
-	this.setfirstName = setFirstName;
-	this.setlastName = setLastName;
-	this.setrole = setRole;
-	this.setemail = setEmail;
-	this.setdateOfBirth = setDateOfBirth;
-	this.setcontact = setContact;
+	this.setPassword = setPassword;
+	this.setFirstName = setFirstName;
+	this.setLastName = setLastName;
+	this.setRole = setRole;
+	this.setEmail = setEmail;
+	this.setDateOfBirth = setDateOfBirth;
+	this.setContact = setContact;
 	
 	this.getUsername = getUsername;
-	this.getpassword = getpassword;
-	this.getfirstName = getfirstName;
-	this.getlastName = getlastName;
-	this.getrole = getrole;
-	this.getemail = getemail;
-	this.getdateOfBirth = getdateOfBirth;
-	this.getcontact = getcontact;
+	this.getPassword = getPassword;
+	this.getFirstName = getFirstName;
+	this.getLastName = getLastName;
+	this.getRole = getRole;
+	this.getEmail = getEmail;
+	this.getDateOfBirth = getDateOfBirth;
+	this.getContact = getContact;
 
 	function setUsername(username) {
 		this.username = username;
@@ -34,47 +34,56 @@ function User(username, password, firstName, lastName, role, email,
 		return this.username;
 	}
 
-	function setPassword(username) {
-		this.username = username;
+	function setPassword(password) {
+		this.password = password;
 	}
-	function getUsername() {
-		return this.username;
+	function getPassword() {
+		return this.password;
 	}
-	function setFirstName(username) {
-		this.username = username;
+	
+	
+	function setFirstName(firstName) {
+		this.firstName = firstName;
 	}
-	function getUsername() {
-		return this.username;
+	function getFirstName() {
+		return this.firstName;
 	}
-	function setLastName(username) {
-		this.username = username;
+	
+	function setLastName(lastName) {
+		this.lastName = lastName;
 	}
-	function getUsername() {
-		return this.username;
+	function getLastName() {
+		return this.lastName;
 	}
-	function setRole(username) {
-		this.username = username;
+	
+	function setRole(role) {
+		this.role = role;
 	}
-	function getUsername() {
-		return this.username;
+	function getRole() {
+		return this.role;
 	}
-	function setEmail(username) {
-		this.username = username;
+	
+	function setEmail(email) {
+		this.email = email;
 	}
-	function getUsername() {
-		return this.username;
+	function getEmail() {
+		return this.email;
 	}
-	function setDateOfBirth(username) {
-		this.username = username;
+	
+	
+	function setDateOfBirth(dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
 	}
-	function getUsername() {
-		return this.username;
+	function getDateOfBirth() {
+		return this.dateOfBirth;
 	}
-	function setContact(username) {
-		this.username = username;
+	
+	
+	function setContact(contact) {
+		this.contact = contact;
 	}
-	function getUsername() {
-		return this.username;
+	function getContact() {
+		return this.contact;
 	}
 
 }
