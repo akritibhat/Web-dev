@@ -68,7 +68,7 @@
 		$lastName.val(user.lastName);
 		$email.val(user.email);
 		$role.val(user.role);
-		$dateOfBirth.val(user.dateOfBirth);
+		$dateOfBirth.val((user.dateOfBirth).substring(0, 10));
 		$contact.val(user.contact);
 		usermain = user.id;
 	}

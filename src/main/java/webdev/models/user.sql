@@ -7,6 +7,6 @@ CREATE TABLE `user` (
   `role` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `contact` varchar(255) DEFAULT NULL,
-  `date_of_birth` date DEFAULT NULL,
+  `date_of_birth` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=513 DEFAULT CHARSET=utf8
