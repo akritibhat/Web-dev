@@ -26,11 +26,15 @@
 			headers: {
 				'content-type':'application/json'
 			}
-		}).then(navigateToProfile);
+		}).then(navigateToProfile,loginFailure);
 	}
 	
 	function navigateToProfile(){
-		// alert('success');
-		window.location.href='jquery/components/profile/profile.template.client.html';
+		//alert('success');
+		window.location.href='/../jquery/components/profile/profile.template.client.html';
+	}
+	
+	function loginFailure(){
+		alert('Incorrect Credentials');
 	}
 })();

@@ -16,7 +16,8 @@ public class User {
 	private String lastName;
 	private String role;
 	private String email;
-	private int contact;
+	private String contact;
+	private String dateOfBirth;
 	
 	public String getRole() {
 		return role;
@@ -33,10 +34,10 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public int getContact() {
+	public String getContact() {
 		return contact;
 	}
-	public void setContact(int contact) {
+	public void setContact(String contact) {
 		this.contact = contact;
 	}
 	public void setId(int id) {
@@ -65,5 +66,11 @@ public class User {
 	}
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+	}
+	public String getDateOfBirth() {
+		return dateOfBirth;
+	}
+	public void setDateOfBirth(String dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
 	}
 }

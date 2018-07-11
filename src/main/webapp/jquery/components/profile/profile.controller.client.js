@@ -2,16 +2,30 @@
 	
     $(init);
 
-    var $staticEmail;
+    
+    var $username;
+    var $password;
     var $firstName;
     var $lastName;
+    var $email;
+    var $role; 
+    var $dateOfBirth;
+    var $contact;
+    
     var $updateBtn;
     var userService = new UserServiceClient();
+   
 
     function init() {
         $username = $("#username");
+        $password = $("#password");
         $firstName = $("#firstName");
         $lastName = $("#lastName");
+        $email = $('#email');
+        $role= $('#role');
+        $dateOfBirth= $('#dateOfBirth');
+        $contact = $('#contact');
+        
         $updateBtn = $("#updateBtn")
             .click(updateUser);
 
@@ -20,21 +34,27 @@
 
     function updateUser() {
         var user = {
+        	password: $password.val(),
             firstName: $firstName.val(),
-            lastName: $lastName.val()
+            lastName: $lastName.val(),
+            email: $email.val(),
+            role: $role.val(),
+            dateOfBirth: $dateOfBirth.val(),
+            contact: $contact.val()
         };
 
         userService
-            .updateUser(12, user)
-            .then(success);
+            .updateUser(usermain, user)
+            .then(success,updateFailure);
     }
 
     function success(response) {
-        if(response === null) {
-            alert('unable to update')
-        } else {
-            alert('success');
-        }
+            alert('Profile Updated Successfully!');
+            renderUser;
+    }
+    
+    function updateFailure(response) {
+            alert('Failed to update Profile. Please try later');
     }
 
     function findUser() {
@@ -49,7 +69,13 @@
     function renderUser(user) {
         console.log(user);
         $username.val(user.username);
+        $password.val(user.password);
         $firstName.val(user.firstName);
         $lastName.val(user.lastName);
+        $email.val(user.email);
+        $role.val(user.role);
+        $dateOfBirth.val(user.dateOfBirth);
+        $contact.val(user.contact);
+        usermain=user.id;
     }
 })();

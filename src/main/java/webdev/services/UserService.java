@@ -64,10 +64,29 @@ public class UserService {
 		Optional<User> data = repository.findById(userId);
 		if(data.isPresent()) {
 			User user = data.get();
+			user.setPassword(newUser.getPassword());
+			user.setFirstName(newUser.getFirstName());
+			user.setLastName(newUser.getLastName());
+			user.setEmail(newUser.getEmail());
+			user.setDateOfBirth(newUser.getDateOfBirth());
+			user.setContact(newUser.getContact());
+			user.setRole(newUser.getRole());
+			repository.save(user);
+			return user;
+		}
+		return null;
+	}
+	
+	@PutMapping("/api/user/admin/{userId}")
+	public User updateUserProfile(@PathVariable("userId") int userId, @RequestBody User newUser) {
+		Optional<User> data = repository.findById(userId);
+		if(data.isPresent()) {
+			User user = data.get();
 			user.setUsername(newUser.getUsername());
 			user.setPassword(newUser.getPassword());
 			user.setFirstName(newUser.getFirstName());
 			user.setLastName(newUser.getLastName());
+			user.setRole(newUser.getRole());
 			repository.save(user);
 			return user;
 		}

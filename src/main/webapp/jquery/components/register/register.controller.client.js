@@ -24,6 +24,7 @@
     
     else {
     var userObj = {
+      contact: '',
       username: usernameStr,
       password: passwordStr,
       firstName: firstnameStr,
@@ -45,12 +46,12 @@
   }
   
   function registartionSuccessful(){
-	 // alert('yay');
-	  window.location.href='jquery/components/profile/profile.template.client.html';
+	  alert('Profile Created Successfully');
+	  window.location.href='/../jquery/components/profile/profile.template.client.html';
   }
   
   function registrationFailed(){
-	  alert('oops');
+	  alert('Profile Creation Failed');
   
   }
   

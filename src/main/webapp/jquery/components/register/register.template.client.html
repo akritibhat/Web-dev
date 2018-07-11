@@ -1,63 +1,72 @@
 <html>
     <head>
         <title>Registration Page</title>
+         <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
     </head>
     <body>
+      <div class="container">
         <h1>Register</h1>
 
-		<div>
+		<div class="form-group">
             <label for="firstname">
                 First Name
             </label>
             <input type="text"
-                   placeholder="Akriti"
+                   placeholder="First Name"
+                   class="form-control"
                    id="firstname"/>
         </div>
 		
-		<div>
+		<div class="form-group">
             <label for="lastname">
                 Last Name
             </label>
             <input type="text"
-                   placeholder="Bhat"
+                   placeholder="Last Name"
+                   class="form-control"
                    id="lastname"/>
         </div>
 		
 
 
-        <div>
+        <div class="form-group">
             <label for="username">
                 Username
             </label>
             <input type="text"
-                   placeholder="alice"
+                   placeholder="Desired Username"
+                   class="form-control"
                    id="username"/>
         </div>
 
-        <div>
+        <div class="form-group">
             <label for="password">
                 Password
             </label>
             <input type="password"
-                   placeholder="1234qwerasdf"
+                   placeholder="Enter Password"
+                   class="form-control"
                    id="password"/>
         </div>
 
-        <div>
+        <div class="form-group">
             <label for="password2">
                 Validate Password
             </label>
             <input type="password"
-                   placeholder="1234qwerasdf"
+                   placeholder="Re-Enter Password"
+                   class="form-control"
                    id="password2"/>
         </div>
-        <button id="registerBtn">
+        <button id="registerBtn" class="btn btn-primary">
             Register
         </button>
         <a href="login.template.client.html">
             Login
         </a>
-		
+		</div>
         <script
                 src="https://code.jquery.com/jquery-3.3.1.min.js"
                 integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="

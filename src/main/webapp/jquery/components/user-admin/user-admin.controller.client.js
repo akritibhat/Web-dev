@@ -30,12 +30,14 @@
         var password = $('#passwordFld').val();
         var firstName = $('#firstNameFld').val();
         var lastName = $('#lastNameFld').val();
+        var role = $('#roleFld').val();
 
         var user = {
             username: username,
             password: password,
             firstName: firstName,
-            lastName: lastName
+            lastName: lastName,
+            role: role
         };
 
         userService
@@ -50,16 +52,18 @@
         var password = $('#passwordFld').val();
         var firstName = $('#firstNameFld').val();
         var lastName = $('#lastNameFld').val();
+        var role = $('#roleFld').val();
 
         var user = {
             username: username,
             password: password,
             firstName: firstName,
-            lastName: lastName
+            lastName: lastName,
+            role: role
         };
 
         userService
-            .updateUser(userMain,user)
+            .updateUserProfile(userMain,user)
             .then(findAllUsers);
     }
 
@@ -82,6 +86,8 @@
             	.html(user.firstName);
             clone.find('.lastName')
         	.html(user.lastName);
+            clone.find('.role')
+        	.html(user.role);
             tbody.append(clone);
         }
     }
@@ -123,11 +129,13 @@
         var password = user.password;
         var firstName = user.firstName;
         var lastName = user.lastName;
+    	var role = user.role;
     	
         $('#usernameFld').val(username);
         $('#passwordFld').val(password);
         $('#firstNameFld').val(firstName);
         $('#lastNameFld').val(lastName);
+        $('#roleFld').val(role);
         
     }
 
