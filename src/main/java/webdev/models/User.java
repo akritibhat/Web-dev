@@ -19,7 +19,7 @@ public class User {
 	private String lastName;
 	private String role;
 	private String email;
-	private String contact;
+	private String phone;
 	private Date dateOfBirth;
 	
 	public String getRole() {
@@ -37,11 +37,11 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getContact() {
-		return contact;
+	public String getPhone() {
+		return phone;
 	}
-	public void setContact(String contact) {
-		this.contact = contact;
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 	public void setId(int id) {
 		this.id = id;

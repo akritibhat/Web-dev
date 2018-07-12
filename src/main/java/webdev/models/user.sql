@@ -6,7 +6,7 @@ CREATE TABLE `user` (
   `username` varchar(255) DEFAULT NULL,
   `role` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
-  `contact` varchar(255) DEFAULT NULL,
   `date_of_birth` datetime DEFAULT NULL,
+  `phone` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=513 DEFAULT CHARSET=utf8
+) ENGINE=MyISAM AUTO_INCREMENT=563 DEFAULT CHARSET=utf8;

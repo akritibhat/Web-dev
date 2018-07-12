@@ -6,6 +6,9 @@ function UserServiceClient() {
 	this.updateUser = updateUser;
 	this.login = login;
 	this.updateUserProfile = updateUserProfile;
+	this.findUserByUsername = findUserByUsername;
+	this.findUserByUsernamePassword = findUserByUsernamePassword;
+	this.logoutUser = logoutUser;
 	this.url = '/api/user';
 	this.login = '/api/login';
 	var self = this;
@@ -61,7 +64,7 @@ function UserServiceClient() {
 	}
 
 	function loadUser() {
-		return fetch('/checkLogin').then(function(response) {
+		return fetch('/api/checkLogin').then(function(response) {
 			return response.json();
 		});
 	}
@@ -78,13 +81,48 @@ function UserServiceClient() {
 		});
 	}
 
+	function findUserByUsernamePassword(user) {
+		return fetch('/api/username', {
+			method : 'post',
+			body : JSON.stringify(user),
+			credentials : 'include',
+			headers : {
+				'content-type' : 'application/json'
+			}
+		}).then(function(response) {
+			return response.json();
+		});
+	}
+
 	function createUser(user) {
 		return fetch(self.url, {
 			method : 'post',
+			credentials : 'include',
 			body : JSON.stringify(user),
 			headers : {
 				'content-type' : 'application/json'
 			}
+		});
+	}
+
+	function logoutUser(user) {
+		return fetch('/api/logout', {
+			method : 'post',
+			body : JSON.stringify(user),
+			credentials : 'include',
+			headers : {
+				'content-type' : 'application/json'
+			}
+		});
+	}
+
+	function findUserByUsername(username) {
+		return fetch('/api/username/' + username)
+		.then(function (response){
+			if(response!=null)
+		return response.json();
+			else
+				return null;
 		});
 	}
 }

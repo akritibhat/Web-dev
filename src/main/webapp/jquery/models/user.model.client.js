@@ -1,5 +1,5 @@
 function User(username, password, firstName, lastName, role, email,
-		dateOfBirth, contact) {
+		dateOfBirth, phone) {
 	this.username = username;
 	this.password = password;
 	this.firstName = firstName;
@@ -7,7 +7,7 @@ function User(username, password, firstName, lastName, role, email,
 	this.role = role;
 	this.email = email;
 	this.dateOfBirth = dateOfBirth;
-	this.contact = contact;
+	this.phone = phone;
 
 	this.setUsername = setUsername;
 	this.setPassword = setPassword;
@@ -16,7 +16,7 @@ function User(username, password, firstName, lastName, role, email,
 	this.setRole = setRole;
 	this.setEmail = setEmail;
 	this.setDateOfBirth = setDateOfBirth;
-	this.setContact = setContact;
+	this.setPhone = setPhone;
 	
 	this.getUsername = getUsername;
 	this.getPassword = getPassword;
@@ -25,7 +25,7 @@ function User(username, password, firstName, lastName, role, email,
 	this.getRole = getRole;
 	this.getEmail = getEmail;
 	this.getDateOfBirth = getDateOfBirth;
-	this.getContact = getContact;
+	this.getPhone = getPhone;
 
 	function setUsername(username) {
 		this.username = username;
@@ -79,11 +79,11 @@ function User(username, password, firstName, lastName, role, email,
 	}
 	
 	
-	function setContact(contact) {
-		this.contact = contact;
+	function setPhone(phone) {
+		this.phone = phone;
 	}
-	function getContact() {
-		return this.contact;
+	function getPhone() {
+		return this.phone;
 	}
 
 }

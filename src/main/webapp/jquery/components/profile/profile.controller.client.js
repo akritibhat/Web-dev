@@ -9,7 +9,7 @@
 	var $email;
 	var $role;
 	var $dateOfBirth;
-	var $contact;
+	var $phone;
 
 	var $updateBtn;
 	var userService = new UserServiceClient();
@@ -22,7 +22,7 @@
 		$email = $('#email');
 		$role = $('#role');
 		$dateOfBirth = $('#dateOfBirth');
-		$contact = $('#contact');
+		$phone = $('#phone');
 
 		$updateBtn = $("#updateBtn").click(updateUser);
 		$logoutBtn = $("#logoutBtn").click(logoutUser);
@@ -38,33 +38,25 @@
 			email : $email.val(),
 			role : $role.val(),
 			dateOfBirth : $dateOfBirth.val(),
-			contact : $contact.val()
+			phone : $phone.val()
 		};
-
-		return fetch('/api/profile', {
-			method : 'put',
-			body : JSON.stringify(user),
-			'credentials' : 'include',
-			headers : {
-				'content-type' : 'application/json'
-			}
-		}).then(success, updateFailure);
-
 		
-	//	userService.updateUser(usermain, user).then(success, updateFailure);
+		userService.updateUser(usermain, user).then(success, updateFailure);
 	}
 
 	function success(response) {
-		alert('Profile Updated Successfully!');
+		 $("#successMsg").show();
+		//alert('Profile Updated Successfully!');
 		renderUser;
 	}
 
 	function updateFailure(response) {
-		alert('Failed to update Profile. Please try later');
+		$("#failureMsg").show();
+		//alert('Failed to update Profile. Please try later');
 	}
 
 	function findUser() {
-		return fetch('/checkLogin', {
+		return fetch('/api/checkLogin', {
 			'credentials' : 'include'
 		}).then(function(response) {
 			return response.json();
@@ -77,14 +69,7 @@
 			'password' : $password.val()
 		};
 
-		fetch('/api/logout', {
-			method : 'post',
-			body : JSON.stringify(user),
-			credentials : 'include',
-			headers : {
-				'content-type' : 'application/json'
-			}
-		}).then(navigateToLogin);
+		userService.logoutUser(user).then(navigateToLogin);
 	}
 
 	function navigateToLogin() {
@@ -99,8 +84,9 @@
 		$lastName.val(user.lastName);
 		$email.val(user.email);
 		$role.val(user.role);
+		if(user.dateOfBirth!=null)
 		$dateOfBirth.val((user.dateOfBirth).substring(0, 10));
-		$contact.val(user.contact);
+		$phone.val(user.phone);
 		usermain = user.id;
 	}
 })();

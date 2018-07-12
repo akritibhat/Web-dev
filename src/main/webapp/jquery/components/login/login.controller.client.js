@@ -1,5 +1,8 @@
 (function() {
+	
+	
 	var $username, $password, $loginBtn;
+	var userService = new UserServiceClient();
 
 	function init() {
 		$username = $('#username');
@@ -9,22 +12,15 @@
 		$loginBtn.click(login);
 	}
 
-	init();
+	$(init);
 
 	function login() {
 		var user = {
 			'username' : $username.val(),
 			'password' : $password.val()
 		};
-
-		fetch('/login', {
-			method : 'post',
-			body : JSON.stringify(user),
-			credentials : 'include',
-			headers : {
-				'content-type' : 'application/json'
-			}
-		}).then(navigateToProfile, loginFailure);
+		userService.findUserByUsernamePassword(user).then(navigateToProfile, loginFailure);
+		
 	}
 
 	function navigateToProfile() {

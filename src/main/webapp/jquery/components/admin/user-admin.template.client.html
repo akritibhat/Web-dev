@@ -15,6 +15,7 @@
 	crossorigin="anonymous"></script>
 
 <script src="../../services/user.service.client.js"></script>
+<script src="../../models/user.model.client.js"></script>
 <script src="user-admin.controller.client.js"></script>
 
 </head>
@@ -46,6 +47,12 @@
 								<option value="Student">Student</option>
 								<option value="Admin">Admin</option>
 						</select></th>
+						<th><input id="emailFld" class="form-control"
+							placeholder="Email" /></th>
+						<th><input id="phoneFld" class="form-control"
+							placeholder="Phone No." /></th>
+						<th><input id="dateOfBirthFld" class="form-control" 
+							type="date" placeholder="Date of Birth" /></th>
 						<th><button id="createUser" class="btn btn-success">Create</button></th>
 						<th><button id="updateUser" class="btn btn-success">Update</button></th>
 					</tr>
@@ -53,10 +60,13 @@
 				<tbody>
 					<tr class="template">
 						<td class="username"></td>
-						<td class="password"></td>
+						<td class="passWord">*******</td>
 						<td class="firstName"></td>
 						<td class="lastName"></td>
 						<td class="role"></td>
+						<td class="email"></td>
+						<td class="phone"></td>
+						<td class="dateOfBirth"></td>
 						<td><button class="delete btn btn-danger">Delete</button></td>
 						<td><button class="edit btn btn-danger">Edit</button></td>
 					</tr>
