@@ -27,7 +27,7 @@
 		$updateBtn = $("#updateBtn").click(updateUser);
 		$logoutBtn = $("#logoutBtn").click(logoutUser);
 
-		findUser().then(renderUser);
+		userService.findUser().then(renderUser);
 	}
 
 	function updateUser() {
@@ -55,14 +55,6 @@
 		//alert('Failed to update Profile. Please try later');
 	}
 
-	function findUser() {
-		return fetch('/api/checkLogin', {
-			'credentials' : 'include'
-		}).then(function(response) {
-			return response.json();
-		});
-	}
-	
 	function logoutUser() {
 		var user = {
 			'username' : $username.val(),

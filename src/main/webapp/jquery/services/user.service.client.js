@@ -11,6 +11,7 @@ function UserServiceClient() {
 	this.logoutUser = logoutUser;
 	this.url = '/api/user';
 	this.login = '/api/login';
+	this.findUser=findUser;
 	var self = this;
 
 	function login(username, password) {
@@ -69,6 +70,15 @@ function UserServiceClient() {
 		});
 	}
 
+	function findUser() {
+		return fetch('/api/checkLogin', {
+			'credentials' : 'include'
+		}).then(function(response) {
+			return response.json();
+		});
+	}
+	
+	
 	function deleteUser(userId) {
 		return fetch(self.url + '/' + userId, {
 			method : 'delete'
