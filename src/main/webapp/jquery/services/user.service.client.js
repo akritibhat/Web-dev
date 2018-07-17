@@ -12,6 +12,7 @@ function UserServiceClient() {
 	this.url = '/api/user';
 	this.login = '/api/login';
 	this.findUser=findUser;
+	this.runMail=runMail;
 	var self = this;
 
 	function login(username, password) {
@@ -133,6 +134,16 @@ function UserServiceClient() {
 		return response.json();
 			else
 				return null;
+		});
+	}
+	
+	function runMail(){
+		return fetch('/api/mail', {
+			method : 'post',
+			credentials : 'include',
+			headers : {
+				'content-type' : 'application/json'
+			}
 		});
 	}
 }

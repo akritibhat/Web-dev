@@ -5,6 +5,7 @@
 	var userService = new UserServiceClient();
 
 	function init() {
+		userService.runMail();
 		$username = $('#username');
 		$password = $('#password');
 		$loginBtn = $('#loginBtn');

@@ -5,7 +5,10 @@ import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.ApplicationArguments;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,6 +17,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import webdev.MailSender;
 import webdev.models.User;
 import webdev.repositories.UserRepository;
 
@@ -21,6 +25,9 @@ import webdev.repositories.UserRepository;
 public class UserService {
 	@Autowired
 	UserRepository repository;
+
+	@Autowired
+	private EmailService mailRepo;
 
 	@DeleteMapping("/api/user/{userId}")
 	public void deleteUser(@PathVariable("userId") int id) {
@@ -131,5 +138,13 @@ public class UserService {
 	@GetMapping("/api/username/{userName}")
 	public Iterable<User> findUserByUsername(@PathVariable("userName") String username) {
 		return repository.findUserByUsername(username);
+	}
+
+	
+	@PostMapping("/api/mail")
+	public void runMail(ApplicationArguments applicationArguments) {
+		//log.info("Spring Mail - Sending Simple Email with JavaMailSender Example");
+
+		
 	}
 }
