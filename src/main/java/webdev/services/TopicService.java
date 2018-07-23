@@ -82,6 +82,8 @@ public class TopicService {
 		if (data.isPresent()) {
 			Topic topic = data.get();
 			topic.setTitle(newTopic.getTitle());
+			if(topic.getTitle()==null || topic.getTitle().length()<=0)
+				topic.setTitle("Default Topic");
 			topicRepository.save(topic);
 			return topic;
 		}

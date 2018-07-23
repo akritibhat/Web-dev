@@ -51,6 +51,8 @@ public class CourseServices {
 			course.setModified(new Date());
 			course.setTitle(newCourse.getTitle());
 			course.setModules(newCourse.getModules());
+			if(course.getTitle()==null || course.getTitle().length()<=0)
+				course.setTitle("Default Course");
 			courseRepository.save(course);
 			return course;
 		}

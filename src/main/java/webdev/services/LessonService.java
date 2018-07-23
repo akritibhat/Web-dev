@@ -86,6 +86,8 @@ public class LessonService {
 		if (data.isPresent()) {
 			Lesson lesson = data.get();
 			lesson.setTitle(newLesson.getTitle());
+			if(lesson.getTitle()==null || lesson.getTitle().length()<=0)
+				lesson.setTitle("Default lesson");
 			lessonRepository.save(lesson);
 			return lesson;
 		}

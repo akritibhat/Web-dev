@@ -89,6 +89,8 @@ public class ModuleService {
 		if(data.isPresent()) {
 			Module module = data.get();
 			module.setTitle(newModule.getTitle());
+			if(module.getTitle()==null || module.getTitle().length()<=0)
+				module.setTitle("Default Module");
 			moduleRepository.save(module);
 			return module;
 		}
