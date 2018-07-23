@@ -30,6 +30,10 @@ public class CourseServices {
 
 	@PostMapping("/api/course")
 	public Course createCourse(@RequestBody Course course) {
+		if(course==null)
+			course=new Course();
+		if(course.getTitle()== null || course.getTitle().length()<=0)
+			course.setTitle("New Course");
 		course.setModified(new Date());
 		return courseRepository.save(course);
 	}

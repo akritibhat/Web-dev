@@ -54,21 +54,17 @@ public class LessonService {
 
 		if (data.isPresent()) {
 			Module module = data.get();
+			if(newLesson==null)
+				newLesson=new Lesson();
+			if(newLesson.getTitle()== null || newLesson.getTitle().length()<=0)
+				newLesson.setTitle("New Lesson");
 			newLesson.setModule(module);
 			return lessonRepository.save(newLesson);
 		}
 		return null;
 	}
 
-	@GetMapping("/api/course/{courseId}/module")
-	public List<Module> findAllModulesForCourse(@PathVariable("courseId") int courseId) {
-		Optional<Course> data = courseRepository.findById(courseId);
-		if (data.isPresent()) {
-			Course course = data.get();
-			return course.getModules();
-		}
-		return null;
-	}
+	
 
 	@DeleteMapping("/api/lesson/{lessonId}")
 	public void deleteLesson(@PathVariable("lessonId") int lessonId) {
@@ -89,9 +85,7 @@ public class LessonService {
 		Optional<Lesson> data = lessonRepository.findById(lessonId);
 		if (data.isPresent()) {
 			Lesson lesson = data.get();
-			lesson.setModule(newLesson.getModule());
 			lesson.setTitle(newLesson.getTitle());
-			lesson.setWidgets(newLesson.getWidgets());
 			lessonRepository.save(lesson);
 			return lesson;
 		}

@@ -1,5 +1,6 @@
 package webdev.services;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -35,7 +36,13 @@ public class ModuleService {
 		
 		if(data.isPresent()) {
 			Course course = data.get();
+			if(newModule==null)
+				newModule=new Module();
+			if(newModule.getTitle()== null || newModule.getTitle().length()<=0)
+				newModule.setTitle("New Module");
 			newModule.setCourse(course);
+			course.setModified(new Date());
+			courseRepository.save(course);
 			return moduleRepository.save(newModule);
 		}
 		return null;		
@@ -81,9 +88,7 @@ public class ModuleService {
 		Optional<Module> data = moduleRepository.findById(moduleId);
 		if(data.isPresent()) {
 			Module module = data.get();
-			module.setCourse(newModule.getCourse());
 			module.setTitle(newModule.getTitle());
-			module.setLessons(newModule.getLessons());
 			moduleRepository.save(module);
 			return module;
 		}

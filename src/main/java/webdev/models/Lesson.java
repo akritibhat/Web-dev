@@ -23,6 +23,11 @@ public class Lesson {
 	@OneToMany(mappedBy="lesson")
 	@JsonIgnore
 	private List<Widget> widgets;
+	
+	@OneToMany(mappedBy="lesson")
+	@JsonIgnore
+	private List<Topic> topics;
+	
 	public int getId() {
 		return id;
 	}
@@ -46,5 +51,11 @@ public class Lesson {
 	}
 	public void setWidgets(List<Widget> widgets) {
 		this.widgets = widgets;
+	}
+	public List<Topic> getTopics() {
+		return topics;
+	}
+	public void setTopics(List<Topic> topics) {
+		this.topics = topics;
 	}
 }
