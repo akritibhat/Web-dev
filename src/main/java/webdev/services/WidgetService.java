@@ -29,12 +29,8 @@ public class WidgetService {
 
 	@GetMapping("/api/topic/{topicId}/widget")
 	public List<Widget> findAllWidgetsForTopic(@PathVariable("topicId") int topicId) {
-		Optional<Topic> optionalTopic = topicRepository.findById(topicId);
-		if (optionalTopic.isPresent()) {
-			Topic topic = optionalTopic.get();
-			return topic.getWidgets();
-		}
-		return null;
+		Iterable<Widget> widgets = repository.findWidgetsForTopic(topicId);
+		return (List<Widget>) widgets;
 	}
 
 	@PostMapping("/api/topic/{topicId}/widget")
