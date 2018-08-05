@@ -25,7 +25,8 @@ public class CourseServices {
 
 	@GetMapping("/api/course")
 	public Iterable<Course> findAllCourses() {
-		return courseRepository.findAll();
+		Iterable<Course> temp=  courseRepository.findAll(); 
+		return temp;
 	}
 
 	@PostMapping("/api/course")
